@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
         if (!marked[i]) count++;
 
     if(p == 32){
-        printf("count = %d\n", count);
+        printf("count = %d, size = %d, id = %d\n", count, size, id);
     }
     if (p > 1)
         MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
