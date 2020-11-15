@@ -117,9 +117,9 @@ int main (int argc, char *argv[])
       MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
                   0, MPI_COMM_WORLD);
 
-   int global_size = 0;
+   unsigned long int global_size = 0;
    if (p > 1)
-      MPI_Reduce(&size, &global_count, 1, MPI_INT, MPI_SUM,
+      MPI_Reduce(&size, &global_size, 1, MPI_INT, MPI_SUM,
                   0, MPI_COMM_WORLD);
 
 
