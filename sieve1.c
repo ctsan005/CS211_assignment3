@@ -45,7 +45,7 @@ int main (int argc, char *argv[])
        last array elements */
 
    low_value = floor(3 + id * (n - 2) / p);
-   if(!(low_value % 2)) low_value++;
+   if(!(low_value % 2)) low_value--;
    high_value = floor(2 + (id + 1) * (n - 2) / p);
    if(!(high_value % 2)) high_value++;
    size = (high_value - low_value + 1)/2;
