@@ -39,13 +39,75 @@ int main (int argc, char *argv[])
    }
 
    n = atoll(argv[1]);
-   /* Stop the timer */
 
-   /* Add you code here  */
+   /* Figure out this process's share of the array, as
+       well as the integers represented by the first and
+       last array elements */
+
+   low_value = floor(3 + id * (n - 2) / p);
+   if(!(low_value % 2)) low_value++;
+   high_value = floor(2 + (id + 1) * (n - 2) / p);
+   size = ceil((high_value - low_value + 1)/2);
+
+
+   /* Bail out if all the primes used for sieving are
+       not all held by process 0 */
+
+   proc0_size = (n - 2) / p;
+
+   if ((3 + proc0_size) < (int) sqrt((double) n)) {
+      if (!id) printf("Too many processes\n");
+      MPI_Finalize();
+      exit(1);
+   }
    
+   /* Allocate this process's share of the array. */
 
+    marked = (char *) malloc(size);
 
+    if (marked == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
 
+   //init the marked array to all 0
+   for (i = 0; i < size; i++) marked[i] = 0;
+
+   //if id = 0; also mean the main process, then the index is 0
+   if (!id) index = 0;
+
+   //because remove all the even number, first prime is 3
+   prime = 3;
+   do {
+      if (prime * prime > low_value)
+         first = (prime * prime - low_value) / 2;
+      else {
+         if (!(low_value % prime)) first = 0;
+         else {
+
+            //two cases, one is the result is a even number, or it is odd
+            int temp;
+            temp = low_value + prime - (low_value % prime);
+            if(!(temp%2)) first = (temp + prime - low_value) / 2 ;
+
+            else first = (prime - (low_value % prime))/2;
+
+         } 
+      }
+      for (i = first; i < size; i += prime) marked[i] = 1;
+      if (!id) {
+         while (marked[++index]);
+         prime = index*2 + 3;
+      }
+      if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
+   } while (prime * prime <= n);
+   count = 0;
+   for (i = 0; i < size; i++)
+      if (!marked[i]) count++;
+   if (p > 1)
+      MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
+                  0, MPI_COMM_WORLD);
 
 
 
