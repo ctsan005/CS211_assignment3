@@ -98,7 +98,7 @@ int main (int argc, char *argv[])
       // for (i = first; i < size; i += prime) marked[i] = 1;
       for (i = first; i < size; i += prime){
          if((low_value + i * 2 ) % prime != 0){
-            prinf("wrong in mark with id = %d, i = %d\n",id, i);
+            printf("wrong in mark with id = %d, i = %d\n",id, i);
             MPI_Finalize();
             exit(1);
          }
