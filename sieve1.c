@@ -90,6 +90,9 @@ int main (int argc, char *argv[])
                }
             }
         }
+        if(prime == 3){
+           printf("The first value is = %llu\n", first);
+        }
         for (i = first; i < size; i += prime) marked[i] = 1;
         if (!id) {
             while (marked[++index]);
