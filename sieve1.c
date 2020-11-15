@@ -121,6 +121,9 @@ int main (int argc, char *argv[])
 
    elapsed_time += MPI_Wtime();
 
+   //for number 2 which we skip in the beginning
+   global_count++;
+
 
    /* Print the results */
 
