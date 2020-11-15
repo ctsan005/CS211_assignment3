@@ -53,7 +53,7 @@ int main (int argc, char *argv[])
    /* Bail out if all the primes used for sieving are
        not all held by process 0 */
 
-   proc0_size = (n - 2) / p;
+   proc0_size = ((n - 2) / p)/2;
 
    if ((3 + proc0_size) < (int) sqrt((double) n)) {
       if (!id) printf("Too many processes\n");
@@ -95,7 +95,15 @@ int main (int argc, char *argv[])
 
          } 
       }
-      for (i = first; i < size; i += prime) marked[i] = 1;
+      // for (i = first; i < size; i += prime) marked[i] = 1;
+      for (i = first; i < size; i += prime){
+         if((low_value + i * 2 ) % prime != 0){
+            prinf("wrong in mark with id = %d, i = %d\n",id, i);
+            MPI_Finalize();
+            exit(1);
+         }
+         marked[i] = 1;
+      }
       if (!id) {
          while (marked[++index]);
          prime = index*2 + 3;
