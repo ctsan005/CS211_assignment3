@@ -83,15 +83,12 @@ int main (int argc, char *argv[])
             if (!(low_value % prime)) first = 0;
             else{
                if((low_value % prime)%2 == 0){
-                  first = 2 * prime - low_value % prime;
+                  first = (2 * prime - low_value % prime) / 2;
                }
                else{
-                  first = prime - low_value % prime;
+                  first = (prime - low_value % prime)/2;
                }
             }
-        }
-        if(prime == 3){
-           printf("The first value is = %llu\n", first);
         }
         for (i = first; i < size; i += prime) marked[i] = 1;
         if (!id) {
