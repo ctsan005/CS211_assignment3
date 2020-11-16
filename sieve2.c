@@ -122,6 +122,15 @@ int main (int argc, char *argv[])
 
    } while (prime * prime <= n);
 
+   unsigned long long int count_begin;
+   count_begin = 0;
+   for (i = 0; i < size; i++)
+      if (!marked_begin[i]) count_begin++;
+
+   if(p == 32){
+      printf("count begin = %llu, id = %llu\n", count_begin, id);
+   }
+
    index = 0;
    prime = 3;
    if(id != 0){
@@ -146,6 +155,12 @@ int main (int argc, char *argv[])
 
       } while (prime * prime <= n);
    }
+
+   else{
+      marked = marked_begin;
+   }
+
+   
    
 
    count = 0;
