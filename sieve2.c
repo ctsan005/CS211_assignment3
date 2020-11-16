@@ -35,6 +35,13 @@ int main (int argc, char *argv[])
    unsigned long int  local_prime_size;
 
 
+   //add on variable
+   unsigned long long int    low_value_begin;    /* Lowest value for first set */
+   unsigned long long int    high_value_begin;    /* highest value for first set */
+   unsigned long int    size_begin;         /* Elements in begin set */
+   char  *marked_begin;       /* Portion of 2,...,'n' */
+
+
    MPI_Init (&argc, &argv);
 
    /* Start the timer */
@@ -53,11 +60,109 @@ int main (int argc, char *argv[])
    n = atoll(argv[1]);
 
    /* Figure out this process's share of the array, as
-      well as the integers represented by the first and
-      last array elements */
+       well as the integers represented by the first and
+       last array elements */
 
-   /* Add you code here  */
+   low_value = floor(3 + id * (n - 2) / p);
+   if(!(low_value % 2)) low_value--;
+   low_value_begin = 3;
 
+
+   high_value = floor(2 + (id + 1) * (n - 2) / p);
+   if(!(high_value % 2)) high_value++;
+   high_value_begin = floor(2 + (n - 2) / p);
+
+
+   size = (high_value - low_value + 1)/2;
+   size_begin = (high_value_begin -low_value_begin +1)/2;
+   
+
+
+   proc0_size = ((n - 2) / p)/2;
+
+   if ((3 + proc0_size) < (int) sqrt((double) n)) {
+      if (!id) printf("Too many processes\n");
+      MPI_Finalize();
+      exit(1);
+   }
+
+   /* Allocate this process's share of the array. */
+
+    marked = (char *) malloc(size);
+    marked_begin = (char *) malloc(size);
+
+    if (marked == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
+    if (marked_begin == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
+
+    //init the marked array to all 0
+   for (i = 0; i < size; i++) marked[i] = 0;
+   for (i = 0; i < size_begin; i++) marked_begin[i] = 0;
+
+
+   index = 0;
+
+   //find all the prime in the beginning
+   prime = 3;
+   do {
+   
+      first =( prime * prime - low_value_begin ) /2;
+        
+      for (i = first; i < size; i += prime) marked_begin[i] = 1;
+
+      while (marked_begin[++index]);
+      prime = index*2 + 3;
+
+   } while (prime * prime <= n);
+
+   index = 0;
+   prime = 3;
+   if(id != 0){
+      do {
+         if (prime * prime > low_value)
+            first =( prime * prime - low_value ) /2;
+         else {
+            if (!(low_value % prime)) first = 0;
+            else{
+               if((low_value % prime)%2 == 0){
+                  first = (2 * prime - low_value % prime) / 2;
+               }
+               else{
+                  first = (prime - low_value % prime)/2;
+               }
+            }
+         }
+         for (i = first; i < size; i += prime) marked[i] = 1;
+
+         while (marked_begin[++index]);
+         prime = index*2 + 3;
+
+      } while (prime * prime <= n);
+   }
+   
+
+   count = 0;
+   for (i = 0; i < size; i++)
+      if (!marked[i]) count++;
+
+   if(p == 32){
+      printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
+   }
+   if (p > 1)
+      MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
+                  0, MPI_COMM_WORLD);
+
+   unsigned long int global_size = 0;
+   if (p > 1)
+      MPI_Reduce(&size, &global_size, 1, MPI_INT, MPI_SUM,
+                  0, MPI_COMM_WORLD);
 
 
 
