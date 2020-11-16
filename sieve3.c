@@ -150,26 +150,26 @@ int main (int argc, char *argv[])
    //After the above while loop, I have two array that carry the info of each prime number and their first number
 
    
-   i = low_value + 1000;
-   while(i <= high_value){
-      for(j = 0; j < num_prime; j++){
-         while(first_list[j] < i){
-            marked[first_list[j]] = 1;
-            first_list[j] += prime_list[j];
-         }
-      }
+   // i = low_value + 1000;
+   // while(i <= high_value){
+   //    for(j = 0; j < num_prime; j++){
+   //       while(first_list[j] < i){
+   //          marked[first_list[j]] = 1;
+   //          first_list[j] += prime_list[j];
+   //       }
+   //    }
 
-      //iterate all the value already
-      if(i == high_value){
-         i++;
-      }
+   //    //iterate all the value already
+   //    if(i == high_value){
+   //       i++;
+   //    }
 
-      //more value to iterate, either less than high_value, or up to high value
-      else{
-         i = ((i + 1000) > high_value ) ? high_value : i + 1000;
-      }
+   //    //more value to iterate, either less than high_value, or up to high value
+   //    else{
+   //       i = ((i + 1000) > high_value ) ? high_value : i + 1000;
+   //    }
       
-   }
+   // }
 
 
    
