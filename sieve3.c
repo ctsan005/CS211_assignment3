@@ -41,7 +41,7 @@ int main (int argc, char *argv[])
    char  *marked_begin;       /* Portion of 2,...,'n' */
    unsigned long *prime_list;       //use to store all the prime in the beginning group
    unsigned long long *first_list;  //use to store all the first number for the each of the prime number
-   unsigned long * num_prime;    // use to index through how many prime in the first group
+   unsigned long num_prime;    // use to index through how many prime in the first group
    unsigned long int    j;
 
 
