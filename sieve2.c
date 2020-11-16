@@ -182,8 +182,8 @@ int main (int argc, char *argv[])
 
 
 
-
-
+   //add the prime number 2 back
+   global_count++;
 
 
 
