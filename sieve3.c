@@ -153,7 +153,7 @@ int main (int argc, char *argv[])
    while(i <= high_value){
       for(j = 0; j < num_prime - 2; j++){
          while(first_list[j] < i){
-            if(first_list[j] < high_value){
+            if(first_list[j] < size){
                marked[first_list[j]] = 1;
                first_list[j] += prime_list[j];
             }
