@@ -112,9 +112,29 @@ int main (int argc, char *argv[])
    //find all the prime in the beginning
    prime = 3;
    do {
-      
-      //use to mark all the prime in process not equal to 0
-      if(id != 0){
+   
+      first =( prime * prime - low_value_begin ) /2;
+        
+      for (i = first; i < size; i += prime) marked_begin[i] = 1;
+
+      while (marked_begin[++index]);
+      prime = index*2 + 3;
+
+   } while (prime * prime <= n);
+
+   unsigned long long int count_begin;
+   count_begin = 0;
+   for (i = 0; i < size; i++)
+      if (!marked_begin[i]) count_begin++;
+
+   if(p == 32){
+      printf("count begin = %llu, id = %llu\n", count_begin, id);
+   }
+
+   index = 0;
+   prime = 3;
+   if(id != 0){
+      do {
          if (prime * prime > low_value)
             first =( prime * prime - low_value ) /2;
          else {
@@ -130,29 +150,16 @@ int main (int argc, char *argv[])
          }
          for (i = first; i < size; i += prime) marked[i] = 1;
 
-      }
+         while (marked_begin[++index]);
+         prime = index*2 + 3;
 
+      } while (prime * prime <= n);
+   }
 
-      //process the init list to find all the next prime to process
-      first =( prime * prime - low_value_begin ) /2;
-        
-      for (i = first; i < size; i += prime) marked_begin[i] = 1;
+   else{
+      marked = marked_begin;
+   }
 
-      while (marked_begin[++index]);
-      prime = index*2 + 3;
-
-   } while (prime * prime <= n);
-
-   // unsigned long long int count_begin;
-   // count_begin = 0;
-   // for (i = 0; i < size; i++)
-   //    if (!marked_begin[i]) count_begin++;
-
-   // if(p == 32){
-   //    printf("count begin = %llu, id = %llu\n", count_begin, id);
-   // }
-
-   
    
    
 
