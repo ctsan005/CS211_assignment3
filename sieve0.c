@@ -97,9 +97,9 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < size; i++)
         if (!marked[i]) count++;
 
-    if(p == 32){
-        printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
-    }
+    // if(p == 32){
+    //     printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
+    // }
     if (p > 1)
         MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
                    0, MPI_COMM_WORLD);
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
 
     if (!id) {
         printf("The total number of prime: %ld, total time: %10.6f, total node %d\n", global_count, elapsed_time, p);
-        printf("The total number of size: %ld, total node %d\n", global_size, p);
+        // printf("The total number of size: %ld, total node %d\n", global_size, p);
     }
     MPI_Finalize();
     return 0;

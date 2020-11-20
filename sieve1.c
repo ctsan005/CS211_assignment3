@@ -129,7 +129,7 @@ int main (int argc, char *argv[])
 
    if (!id) {
       printf("The total number of prime: %llu, total time: %10.6f, total node %d\n", global_count, elapsed_time, p);
-      printf("The total number of size: %llu, total node %d\n", global_size, p);
+    //   printf("The total number of size: %llu, total node %d\n", global_size, p);
 
    }
    MPI_Finalize ();
