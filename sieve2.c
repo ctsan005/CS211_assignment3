@@ -157,8 +157,16 @@ int main (int argc, char *argv[])
    
 
    count = 0;
-   for (i = 0; i < size; i++)
-      if (!marked[i]) count++;
+
+   if(id == 0){
+      for (i = 0; i < size; i++)
+         if (!marked_begin[i]) count++;
+   }
+   else{
+      for (i = 0; i < size; i++)
+         if (!marked[i]) count++;
+   }
+   
 
    if(p == 32){
       printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
