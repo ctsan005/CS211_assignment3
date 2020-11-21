@@ -147,7 +147,7 @@ int main (int argc, char *argv[])
          if(p == 32){
             if(id == 1){
                if(list_size == 50){
-                  printf("list size reach 50 \n");
+                  printf("list size reach 50 with prime: %lu\n",prime);
                }
             }
          }
