@@ -155,6 +155,13 @@ int main (int argc, char *argv[])
                      first_list[j] += prime_list[j];
                   }
                }
+
+               if(i == high_value){
+                  i++;
+               }
+               else{
+                  i = ((i + 1000) > high_value ) ? high_value : i + 1000;
+               }
             }
 
             list_size = 0;
