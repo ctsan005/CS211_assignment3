@@ -144,6 +144,10 @@ int main (int argc, char *argv[])
          first_list[list_size] = first;
          list_size++;
 
+         if(list_size == 50){
+            printf("list size reach 50 \n");
+         }
+
          //if the list size reached 100, start to do the marked
          if(list_size == 100){
 
