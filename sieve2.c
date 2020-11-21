@@ -168,9 +168,9 @@ int main (int argc, char *argv[])
    }
    
 
-   // if(p == 32){
-   //    printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
-   // }
+   if(p == 32){
+      printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), size, id);
+   }
    if (p > 1)
       MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
                   0, MPI_COMM_WORLD);
