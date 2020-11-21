@@ -169,7 +169,7 @@ int main (int argc, char *argv[])
    
 
    if(p == 32){
-      printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), size, id);
+      printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
    }
    if (p > 1)
       MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
