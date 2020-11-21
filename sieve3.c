@@ -113,8 +113,8 @@ int main (int argc, char *argv[])
 
    index = 0;
 
-   prime_list = (unsigned long int *) malloc(4 * 100);
-   first_list = (unsigned long int *) malloc(4 * 100);
+   prime_list = (unsigned long int *) malloc(4 * 20);
+   first_list = (unsigned long int *) malloc(4 * 20);
    list_size = 0;
 
 
@@ -146,8 +146,8 @@ int main (int argc, char *argv[])
 
          if(p == 32){
             if(id == 1){
-               if(list_size == 50){
-                  printf("list size reach 50 with prime: %lu\n",prime);
+               if(list_size == 19){
+                  printf("list size reach 19 with prime: %lu\n",prime);
                }
             }
          }
@@ -156,7 +156,7 @@ int main (int argc, char *argv[])
          
 
          //if the list size reached 100, start to do the marked
-         if(list_size == 100){
+         if(list_size == 20){
 
             i = low_value + 300;
             while(i <= high_value){
