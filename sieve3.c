@@ -144,9 +144,16 @@ int main (int argc, char *argv[])
          first_list[list_size] = first;
          list_size++;
 
-         if(list_size == 50){
-            printf("list size reach 50 \n");
+         if(p == 32){
+            if(id == 1){
+               if(list_size == 50){
+                  printf("list size reach 50 \n");
+               }
+            }
          }
+         
+
+         
 
          //if the list size reached 100, start to do the marked
          if(list_size == 100){
@@ -164,7 +171,7 @@ int main (int argc, char *argv[])
                   i++;
                }
                else{
-                  i = ((i + 1000) > high_value ) ? high_value : i + 1000;
+                  i = ((i + 300) > high_value ) ? high_value : i + 300;
                }
             }
 
