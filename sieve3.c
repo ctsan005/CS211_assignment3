@@ -157,6 +157,8 @@ int main (int argc, char *argv[])
                }
             }
 
+            list_size = 0;
+
          }
 
          for (i = first; i < size; i += prime) marked[i] = 1;
