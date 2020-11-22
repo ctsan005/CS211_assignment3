@@ -137,7 +137,7 @@ int main (int argc, char *argv[])
       else{
          a1 = prime;
       }
-      prime_list[list_size] = prime;
+      // prime_list[list_size] = prime;
 
       
       //use to mark all the prime in process not equal to 0
@@ -162,7 +162,7 @@ int main (int argc, char *argv[])
          else{
             f1 = first;
          }
-         first_list[list_size] = first;
+         // first_list[list_size] = first;
          list_size++;
 
          if(p == 32){
