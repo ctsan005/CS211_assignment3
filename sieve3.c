@@ -211,7 +211,6 @@ int main (int argc, char *argv[])
 
          
 
-      //    //if the list size reached 100, start to do the marked
          if(list_size%prime_size == 0){
 
 
@@ -232,9 +231,8 @@ int main (int argc, char *argv[])
                // }
 
                for(j = 0; j < prime_size; j++){
-                  for(;(f[j] <i) &&(f[j] < size); ){
+                  for(;(f[j] <i) &&(f[j] < size); f[j] += a[j]){
                      marked[f[j]] = 1;
-                     f[j] += a[j];
                   }
                }
                
