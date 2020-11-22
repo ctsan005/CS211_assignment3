@@ -169,7 +169,7 @@ int main (int argc, char *argv[])
       // else{
       //    a2 = prime;
       // }
-      // a[list_size%prime_size] = prime;
+      a[list_size%prime_size] = prime;
 
       
       //use to mark all the prime in process not equal to 0
