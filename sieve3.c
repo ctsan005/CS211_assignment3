@@ -141,20 +141,20 @@ int main (int argc, char *argv[])
 
       
       //use to mark all the prime in process not equal to 0
-      // if(id != 0){
-      //    if (prime * prime > low_value)
-      //       first =( prime * prime - low_value ) /2;
-      //    else {
-      //       if (!(low_value % prime)) first = 0;
-      //       else{
-      //          if((low_value % prime)%2 == 0){
-      //             first = (2 * prime - low_value % prime) / 2;
-      //          }
-      //          else{
-      //             first = (prime - low_value % prime)/2;
-      //          }
-      //       }
-      //    }
+      if(id != 0){
+         if (prime * prime > low_value)
+            first =( prime * prime - low_value ) /2;
+         else {
+            if (!(low_value % prime)) first = 0;
+            else{
+               if((low_value % prime)%2 == 0){
+                  first = (2 * prime - low_value % prime) / 2;
+               }
+               else{
+                  first = (prime - low_value % prime)/2;
+               }
+            }
+         }
 
       //    // if(list_size%2 == 0){
       //    //    f0 = first;
