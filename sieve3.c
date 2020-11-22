@@ -219,15 +219,15 @@ int main (int argc, char *argv[])
 
 
    //last run for the list, list size will be smaller than 100
-   i = low_value + 300;
-   while(i <= high_value){
-      for(j = 0; j < list_size; j++){
-         while(first_list[j] < i && first_list[j] < size){
-            marked[first_list[j]] = 1;
-            first_list[j] += prime_list[j];
-         }
-      }
-   }
+   // i = low_value + 300;
+   // while(i <= high_value){
+   //    for(j = 0; j < list_size; j++){
+   //       while(first_list[j] < i && first_list[j] < size){
+   //          marked[first_list[j]] = 1;
+   //          first_list[j] += prime_list[j];
+   //       }
+   //    }
+   // }
 
    // unsigned long long int count_begin;
    // count_begin = 0;
