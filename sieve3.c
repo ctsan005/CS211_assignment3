@@ -114,7 +114,7 @@ int main (int argc, char *argv[])
    index = 0;
 
    int prime_size;
-   prime_size = 4;
+   prime_size = 10;
 
    // register unsigned long int a0;
    // register unsigned long int a1;
