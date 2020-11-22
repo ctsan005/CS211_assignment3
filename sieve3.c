@@ -227,10 +227,11 @@ int main (int argc, char *argv[])
 
                for(j = 0; j < 3; j++){
                   for(;(f[j] <i) &&(f[j] < size); ){
-                     marked[j] = 1;
+                     marked[f[j]] = 1;
                      f[j] += a[j];
                   }
                }
+               
 
 
                if(i == high_value){
