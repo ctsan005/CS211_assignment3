@@ -156,12 +156,12 @@ int main (int argc, char *argv[])
             }
          }
 
-         if(list_size%2 == 0){
-            f0 = first;
-         }
-         else{
-            f1 = first;
-         }
+         // if(list_size%2 == 0){
+         //    f0 = first;
+         // }
+         // else{
+         //    f1 = first;
+         // }
          // first_list[list_size] = first;
          list_size++;
 
