@@ -319,7 +319,7 @@ int main (int argc, char *argv[])
       }
    }
 
-   printf("list size = %lu",list_size);
+   // printf("list size = %lu",list_size);
 
    
    
