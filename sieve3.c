@@ -177,32 +177,32 @@ int main (int argc, char *argv[])
          
 
          //if the list size reached 100, start to do the marked
-         if(list_size%2 == 0){
+         // if(list_size%2 == 0){
 
-            i = low_value + 300;
-            while(i <= high_value){
+         //    i = low_value + 300;
+         //    while(i <= high_value){
                
-               while(f0 < i && f0 < size){
-                  // marked[f0] = 1;
-                  f0 += a0;
-               }
-               while(f1 < i && f1 < size){
-                  // marked[f1] = 1;
-                  f1 += a1;
-               }
+         //       while(f0 < i && f0 < size){
+         //          // marked[f0] = 1;
+         //          f0 += a0;
+         //       }
+         //       while(f1 < i && f1 < size){
+         //          // marked[f1] = 1;
+         //          f1 += a1;
+         //       }
 
 
-               if(i == high_value){
-                  i++;
-               }
-               else{
-                  i = ((i + 300) > high_value ) ? high_value : i + 300;
-               }
-            }
+         //       if(i == high_value){
+         //          i++;
+         //       }
+         //       else{
+         //          i = ((i + 300) > high_value ) ? high_value : i + 300;
+         //       }
+         //    }
 
-            // list_size = 0;
+         //    // list_size = 0;
 
-         }
+         // }
 
       }
 
