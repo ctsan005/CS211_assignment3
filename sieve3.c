@@ -131,7 +131,7 @@ int main (int argc, char *argv[])
    register unsigned  int *f;
 
    int block_size;
-   block_size = 2500;
+   block_size = 2000;
 
    
 
