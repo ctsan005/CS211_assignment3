@@ -130,6 +130,9 @@ int main (int argc, char *argv[])
 
    register unsigned  int *f;
 
+   int block_size;
+   block_size = 2500;
+
    
 
    f = (unsigned int *) malloc(4*prime_size);
@@ -211,8 +214,6 @@ int main (int argc, char *argv[])
       //    //if the list size reached 100, start to do the marked
          if(list_size%prime_size == 0){
 
-            int block_size;
-            block_size = 2500;
 
             i = low_value + block_size;
             while(i <= high_value){
@@ -265,25 +266,28 @@ int main (int argc, char *argv[])
    } while (prime * prime <= n);
 
 
-   //last run for the list, list size will be smaller than 100
-   // i = low_value + 300;
-   // while(i <= high_value){
-   //    for(j = 0; j < list_size; j++){
-   //       while(first_list[j] < i && first_list[j] < size){
-   //          marked[first_list[j]] = 1;
-   //          first_list[j] += prime_list[j];
-   //       }
-   //    }
-   // }
+   
 
-   // unsigned long long int count_begin;
-   // count_begin = 0;
-   // for (i = 0; i < size; i++)
-   //    if (!marked_begin[i]) count_begin++;
+   i = low_value + block_size;
+   while(i <= high_value){
+      
 
-   // if(p == 32){
-   //    printf("count begin = %llu, id = %llu\n", count_begin, id);
-   // }
+      for(j = 0; j < list_size%prime_size; j++){
+         for(;(f[j] <i) &&(f[j] < size); ){
+            marked[f[j]] = 1;
+            f[j] += a[j];
+         }
+      }
+      
+
+
+      if(i == high_value){
+         i++;
+      }
+      else{
+         i = ((i + block_size) > high_value ) ? high_value : i + block_size;
+      }
+   }
 
    
    
