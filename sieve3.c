@@ -200,13 +200,13 @@ int main (int argc, char *argv[])
          f[list_size%prime_size] = first;
          list_size++;
 
-         if(p == 32){
-            if(id == 1){
-               if(list_size%100 == 0){
-                  printf("list size reach 19 with prime: %lu\n",prime);
-               }
-            }
-         }
+         // if(p == 32){
+         //    if(id == 1){
+         //       if(list_size%100 == 0){
+         //          printf("list size reach 19 with prime: %lu\n",prime);
+         //       }
+         //    }
+         // }
          
 
          
@@ -272,7 +272,7 @@ int main (int argc, char *argv[])
    while(i <= high_value){
       
 
-      for(j = 0; j < list_size%prime_size; j++){
+      for(j = 0; j < list_size%prime_size + 1; j++){
          for(;(f[j] <i) &&(f[j] < size); ){
             marked[f[j]] = 1;
             f[j] += a[j];
@@ -305,9 +305,9 @@ int main (int argc, char *argv[])
    }
    
 
-   if(p == 32){
-      printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
-   }
+   // if(p == 32){
+   //    printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
+   // }
    if (p > 1)
       MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
                   0, MPI_COMM_WORLD);
