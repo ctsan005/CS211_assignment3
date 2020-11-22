@@ -139,19 +139,19 @@ int main (int argc, char *argv[])
 
    
 
-   f = (unsigned int *) malloc(4*prime_size);
+   // f = (unsigned int *) malloc(4*prime_size);
 
-   if (a == NULL) {
-        printf("Cannot allocate enough memory\n");
-        MPI_Finalize();
-        exit(1);
-    }
+   // if (a == NULL) {
+   //      printf("Cannot allocate enough memory\n");
+   //      MPI_Finalize();
+   //      exit(1);
+   //  }
 
-    if (f == NULL) {
-        printf("Cannot allocate enough memory\n");
-        MPI_Finalize();
-        exit(1);
-    }
+   //  if (f == NULL) {
+   //      printf("Cannot allocate enough memory\n");
+   //      MPI_Finalize();
+   //      exit(1);
+   //  }
 
    list_size = 0;
 
