@@ -131,12 +131,12 @@ int main (int argc, char *argv[])
    prime = 3;
    do {
       //to put the value into the prime list
-      if(list_size%2 == 0){
-         a0 = prime;
-      }
-      else{
-         a1 = prime;
-      }
+      // if(list_size%2 == 0){
+      //    a0 = prime;
+      // }
+      // else{
+      //    a1 = prime;
+      // }
       // prime_list[list_size] = prime;
 
       
