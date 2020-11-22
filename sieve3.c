@@ -113,13 +113,16 @@ int main (int argc, char *argv[])
 
    index = 0;
 
+   int prime_size;
+   prime_size = 4
+
    // register unsigned long int a0;
    // register unsigned long int a1;
    // register unsigned long int a2;
 
    register unsigned  int *a;
 
-   a = (unsigned int *) malloc(4*3);
+   a = (unsigned int *) malloc(4*prime_size);
 
    // register unsigned long int f0;
    // register unsigned long int f1;
@@ -127,7 +130,9 @@ int main (int argc, char *argv[])
 
    register unsigned  int *f;
 
-   f = (unsigned int *) malloc(4*3);
+   
+
+   f = (unsigned int *) malloc(4*prime_size);
 
    if (a == NULL) {
         printf("Cannot allocate enough memory\n");
@@ -161,7 +166,7 @@ int main (int argc, char *argv[])
       // else{
       //    a2 = prime;
       // }
-      a[list_size%3] = prime;
+      a[list_size%prime_size] = prime;
 
       
       //use to mark all the prime in process not equal to 0
@@ -189,7 +194,7 @@ int main (int argc, char *argv[])
          // else{
          //    f2 = first;
          // }
-         f[list_size%3] = first;
+         f[list_size%prime_size] = first;
          list_size++;
 
          if(p == 32){
@@ -204,7 +209,7 @@ int main (int argc, char *argv[])
          
 
       //    //if the list size reached 100, start to do the marked
-         if(list_size%3 == 0){
+         if(list_size%prime_size == 0){
 
             int block_size;
             block_size = 2500;
@@ -225,7 +230,7 @@ int main (int argc, char *argv[])
                //    f2 += a2;
                // }
 
-               for(j = 0; j < 3; j++){
+               for(j = 0; j < prime_size; j++){
                   for(;(f[j] <i) &&(f[j] < size); ){
                      marked[f[j]] = 1;
                      f[j] += a[j];
