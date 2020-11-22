@@ -113,7 +113,7 @@ int main (int argc, char *argv[])
 
    index = 0;
 
-   // int prime_size;
+   int prime_size;
    prime_size = 3;
 
    
