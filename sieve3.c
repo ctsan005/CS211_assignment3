@@ -118,13 +118,13 @@ int main (int argc, char *argv[])
 
    
 
-   register unsigned long *a;
+   register unsigned int *a;
 
-   a = (unsigned long *) malloc(4*prime_size);
+   a = (unsigned int *) malloc(4*prime_size);
 
    
 
-   register unsigned long *f;
+   register unsigned int *f;
 
    int block_size;
    block_size = 3000;
@@ -139,7 +139,7 @@ int main (int argc, char *argv[])
 
    
 
-   f = (unsigned long *) malloc(4*prime_size);
+   f = (unsigned int *) malloc(4*prime_size);
 
    if (a == NULL) {
         printf("Cannot allocate enough memory\n");
