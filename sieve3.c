@@ -114,7 +114,7 @@ int main (int argc, char *argv[])
    index = 0;
 
    int prime_size;
-   prime_size = 30;
+   prime_size = 50;
 
    
 
