@@ -122,7 +122,7 @@ int main (int argc, char *argv[])
 
    a = (unsigned long int *) malloc(8*prime_size);
 
-   printf("unsigned long int size is %lu", size(unsigned long int));
+   printf("unsigned long int size is %lu", sizeof(unsigned long int));
 
    
 
