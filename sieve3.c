@@ -141,70 +141,70 @@ int main (int argc, char *argv[])
 
       
       //use to mark all the prime in process not equal to 0
-      if(id != 0){
-         if (prime * prime > low_value)
-            first =( prime * prime - low_value ) /2;
-         else {
-            if (!(low_value % prime)) first = 0;
-            else{
-               if((low_value % prime)%2 == 0){
-                  first = (2 * prime - low_value % prime) / 2;
-               }
-               else{
-                  first = (prime - low_value % prime)/2;
-               }
-            }
-         }
+      // if(id != 0){
+      //    if (prime * prime > low_value)
+      //       first =( prime * prime - low_value ) /2;
+      //    else {
+      //       if (!(low_value % prime)) first = 0;
+      //       else{
+      //          if((low_value % prime)%2 == 0){
+      //             first = (2 * prime - low_value % prime) / 2;
+      //          }
+      //          else{
+      //             first = (prime - low_value % prime)/2;
+      //          }
+      //       }
+      //    }
 
-         // if(list_size%2 == 0){
-         //    f0 = first;
-         // }
-         // else{
-         //    f1 = first;
-         // }
-         // first_list[list_size] = first;
-         list_size++;
+      //    // if(list_size%2 == 0){
+      //    //    f0 = first;
+      //    // }
+      //    // else{
+      //    //    f1 = first;
+      //    // }
+      //    // first_list[list_size] = first;
+      //    list_size++;
 
-         if(p == 32){
-            if(id == 1){
-               if(list_size%100 == 0){
-                  printf("list size reach 19 with prime: %lu\n",prime);
-               }
-            }
-         }
+      //    if(p == 32){
+      //       if(id == 1){
+      //          if(list_size%100 == 0){
+      //             printf("list size reach 19 with prime: %lu\n",prime);
+      //          }
+      //       }
+      //    }
          
 
          
 
-         //if the list size reached 100, start to do the marked
-         // if(list_size%2 == 0){
+      //    //if the list size reached 100, start to do the marked
+      //    // if(list_size%2 == 0){
 
-         //    i = low_value + 300;
-         //    while(i <= high_value){
+      //    //    i = low_value + 300;
+      //    //    while(i <= high_value){
                
-         //       while(f0 < i && f0 < size){
-         //          // marked[f0] = 1;
-         //          f0 += a0;
-         //       }
-         //       while(f1 < i && f1 < size){
-         //          // marked[f1] = 1;
-         //          f1 += a1;
-         //       }
+      //    //       while(f0 < i && f0 < size){
+      //    //          // marked[f0] = 1;
+      //    //          f0 += a0;
+      //    //       }
+      //    //       while(f1 < i && f1 < size){
+      //    //          // marked[f1] = 1;
+      //    //          f1 += a1;
+      //    //       }
 
 
-         //       if(i == high_value){
-         //          i++;
-         //       }
-         //       else{
-         //          i = ((i + 300) > high_value ) ? high_value : i + 300;
-         //       }
-         //    }
+      //    //       if(i == high_value){
+      //    //          i++;
+      //    //       }
+      //    //       else{
+      //    //          i = ((i + 300) > high_value ) ? high_value : i + 300;
+      //    //       }
+      //    //    }
 
-         //    // list_size = 0;
+      //    //    // list_size = 0;
 
-         // }
+      //    // }
 
-      }
+      // }
 
 
       //process the init list to find all the next prime to process
