@@ -114,7 +114,7 @@ int main (int argc, char *argv[])
    index = 0;
 
    int prime_size;
-   prime_size = 10000;
+   prime_size = 100;
 
    
 
@@ -215,72 +215,72 @@ int main (int argc, char *argv[])
 
          
 
-         // if(list_size%prime_size == 0){
+         if(list_size%prime_size == 0){
 
 
-         //    i = low_value + block_size;
-         //    while(i <= high_value){
+            i = low_value + block_size;
+            while(i <= high_value){
                
-         //       // while(f0 < i && f0 < size){
-         //       //    marked[f0] = 1;
-         //       //    f0 += a0;
-         //       // }
-         //       // while(f1 < i && f1 < size){
-         //       //    marked[f1] = 1;
-         //       //    f1 += a1;
-         //       // }
-         //       // while(f2 < i && f2 < size){
-         //       //    marked[f2] = 1;
-         //       //    f2 += a2;
-         //       // }
+               // while(f0 < i && f0 < size){
+               //    marked[f0] = 1;
+               //    f0 += a0;
+               // }
+               // while(f1 < i && f1 < size){
+               //    marked[f1] = 1;
+               //    f1 += a1;
+               // }
+               // while(f2 < i && f2 < size){
+               //    marked[f2] = 1;
+               //    f2 += a2;
+               // }
 
-         //       for(j = 0; j < prime_size; j++){
-         //          for(;(f[j] <i) &&(f[j] < size); ){
+               for(j = 0; j < prime_size; j++){
+                  for(;(f[j] <i) &&(f[j] < size); ){
 
-         //             marked[f[j]] = 1;
-         //             f[j] += a[j];
+                     marked[f[j]] = 1;
+                     f[j] += a[j];
 
-         //             // if(j == 0) f0 += a0;
-         //             // if(j == 1) f1 += a1;
-         //             // if(j == 2) f2 += a2;
+                     // if(j == 0) f0 += a0;
+                     // if(j == 1) f1 += a1;
+                     // if(j == 2) f2 += a2;
                      
                      
                      
-         //             // if(j == 0){
-         //             //    if( f0 != f[0]){
-         //             //       printf("error in f0 with first %lu and %lu and a0 %lu and %lu \n",f0,f[0],a0,a[0]);
-         //             //       // MPI_Finalize();
-         //             //       // exit(1);
-         //             //       return 1;
-         //             //    }
-         //             // }
-         //             // if(j == 1){
-         //             //    if( f1 != f[1]){
-         //             //       printf("error in f1 with prime %lu and %lu",f1,f[1]);
-         //             //    }
-         //             // }
-         //             // if(j == 2){
-         //             //    if( f2 != f[2]){
-         //             //       printf("error in f2 with prime %lu and %lu",f2,f[2]);
-         //             //    }
-         //             // }
+                     // if(j == 0){
+                     //    if( f0 != f[0]){
+                     //       printf("error in f0 with first %lu and %lu and a0 %lu and %lu \n",f0,f[0],a0,a[0]);
+                     //       // MPI_Finalize();
+                     //       // exit(1);
+                     //       return 1;
+                     //    }
+                     // }
+                     // if(j == 1){
+                     //    if( f1 != f[1]){
+                     //       printf("error in f1 with prime %lu and %lu",f1,f[1]);
+                     //    }
+                     // }
+                     // if(j == 2){
+                     //    if( f2 != f[2]){
+                     //       printf("error in f2 with prime %lu and %lu",f2,f[2]);
+                     //    }
+                     // }
 
-         //          }
-         //       }
+                  }
+               }
                
 
 
-         //       if(i == high_value){
-         //          i++;
-         //       }
-         //       else{
-         //          i = ((i + block_size) > high_value ) ? high_value : i + block_size;
-         //       }
-         //    }
+               if(i == high_value){
+                  i++;
+               }
+               else{
+                  i = ((i + block_size) > high_value ) ? high_value : i + block_size;
+               }
+            }
 
-         //    // list_size = 0;
+            // list_size = 0;
 
-         // }
+         }
 
       }
 
