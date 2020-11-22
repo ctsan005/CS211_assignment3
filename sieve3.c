@@ -129,13 +129,13 @@ int main (int argc, char *argv[])
    int block_size;
    block_size = 3000;
 
-   // register unsigned long int a0;
-   // register unsigned long int a1;
-   // register unsigned long int a2;
+   register unsigned long int a0;
+   register unsigned long int a1;
+   register unsigned long int a2;
 
-   // register unsigned long int f0;
-   // register unsigned long int f1;
-   // register unsigned long int f2;
+   register unsigned long int f0;
+   register unsigned long int f1;
+   register unsigned long int f2;
 
    
 
@@ -160,15 +160,15 @@ int main (int argc, char *argv[])
    prime = 3;
    do {
       //to put the value into the prime list
-      // if(list_size%3 == 0){
-      //    a0 = prime;
-      // }
-      // else if(list_size%3 == 1){
-      //    a1 = prime;
-      // }
-      // else{
-      //    a2 = prime;
-      // }
+      if(list_size%3 == 0){
+         a0 = prime;
+      }
+      else if(list_size%3 == 1){
+         a1 = prime;
+      }
+      else{
+         a2 = prime;
+      }
       a[list_size%prime_size] = prime;
 
       
@@ -188,15 +188,15 @@ int main (int argc, char *argv[])
             }
          }
 
-         // if(list_size%3 == 0){
-         //    f0 = first;
-         // }
-         // else if(list_size%3 == 1){
-         //    f1 = first;
-         // }
-         // else{
-         //    f2 = first;
-         // }
+         if(list_size%3 == 0){
+            f0 = first;
+         }
+         else if(list_size%3 == 1){
+            f1 = first;
+         }
+         else{
+            f2 = first;
+         }
          f[list_size%prime_size] = first;
          list_size++;
 
@@ -232,8 +232,32 @@ int main (int argc, char *argv[])
 
                for(j = 0; j < prime_size; j++){
                   for(;(f[j] <i) &&(f[j] < size); ){
+
                      marked[f[j]] = 1;
                      f[j] += a[j];
+
+                     if(j == 0) f0 += a0;
+                     if(j == 1) f1 += a1;
+                     if(j == 2) f2 += a2;
+                     
+                     
+                     
+                     if(j == 0){
+                        if( f0 != f[0]){
+                           printf("error in f0 with prime %lu and %lu",f0,f[0]);
+                        }
+                     }
+                     if(j == 1){
+                        if( f1 != f[1]){
+                           printf("error in f1 with prime %lu and %lu",f1,f[1]);
+                        }
+                     }
+                     if(j == 2){
+                        if( f2 != f[2]){
+                           printf("error in f2 with prime %lu and %lu",f2,f[2]);
+                        }
+                     }
+
                   }
                }
                
