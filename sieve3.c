@@ -237,15 +237,16 @@ int main (int argc, char *argv[])
                      f[j] += a[j];
 
                      if(j == 0) f0 += a0;
-                     if(j == 1) f1 += a1;
-                     if(j == 2) f2 += a2;
+                     // if(j == 1) f1 += a1;
+                     // if(j == 2) f2 += a2;
                      
                      
                      
                      if(j == 0){
                         if( f0 != f[0]){
-                           printf("error in f0 with prime %lu and %lu\n",f0,f[0]);
-                           return 1;
+                           printf("error in f0 with first %lu and %lu and a0 %lu and %lu \n",f0,f[0],a0,a[0]);
+                           MPI_Finalize();
+                           exit(1);
                         }
                      }
                      // if(j == 1){
