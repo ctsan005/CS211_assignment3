@@ -113,25 +113,29 @@ int main (int argc, char *argv[])
 
    index = 0;
 
-   int prime_size;
-   prime_size = 20;
+   // int prime_size;
+   // prime_size = 20;
 
-   // register unsigned long int a0;
-   // register unsigned long int a1;
-   // register unsigned long int a2;
+   
 
-   register unsigned  int *a;
+   // register unsigned  int *a;
 
-   a = (unsigned int *) malloc(4*prime_size);
+   // a = (unsigned int *) malloc(4*prime_size);
 
-   // register unsigned long int f0;
-   // register unsigned long int f1;
-   // register unsigned long int f2;
+   
 
-   register unsigned  int *f;
+   // register unsigned  int *f;
 
    int block_size;
    block_size = 3000;
+
+   register unsigned long int a0;
+   register unsigned long int a1;
+   register unsigned long int a2;
+
+   register unsigned long int f0;
+   register unsigned long int f1;
+   register unsigned long int f2;
 
    
 
@@ -149,10 +153,6 @@ int main (int argc, char *argv[])
         exit(1);
     }
 
-
-
-   // prime_list = (unsigned long int *) malloc(4 * 20);
-   // first_list = (unsigned long int *) malloc(4 * 20);
    list_size = 0;
 
 
@@ -160,16 +160,16 @@ int main (int argc, char *argv[])
    prime = 3;
    do {
       //to put the value into the prime list
-      // if(list_size%3 == 0){
-      //    a0 = prime;
-      // }
-      // else if(list_size%3 == 1){
-      //    a1 = prime;
-      // }
-      // else{
-      //    a2 = prime;
-      // }
-      a[list_size%prime_size] = prime;
+      if(list_size%3 == 0){
+         a0 = prime;
+      }
+      else if(list_size%3 == 1){
+         a1 = prime;
+      }
+      else{
+         a2 = prime;
+      }
+      // a[list_size%prime_size] = prime;
 
       
       //use to mark all the prime in process not equal to 0
@@ -188,16 +188,16 @@ int main (int argc, char *argv[])
             }
          }
 
-         // if(list_size%3 == 0){
-         //    f0 = first;
-         // }
-         // else if(list_size%3 == 1){
-         //    f1 = first;
-         // }
-         // else{
-         //    f2 = first;
-         // }
-         f[list_size%prime_size] = first;
+         if(list_size%3 == 0){
+            f0 = first;
+         }
+         else if(list_size%3 == 1){
+            f1 = first;
+         }
+         else{
+            f2 = first;
+         }
+         // f[list_size%prime_size] = first;
          list_size++;
 
          // if(p == 32){
@@ -217,24 +217,24 @@ int main (int argc, char *argv[])
             i = low_value + block_size;
             while(i <= high_value){
                
-               // while(f0 < i && f0 < size){
-               //    marked[f0] = 1;
-               //    f0 += a0;
-               // }
-               // while(f1 < i && f1 < size){
-               //    marked[f1] = 1;
-               //    f1 += a1;
-               // }
-               // while(f2 < i && f2 < size){
-               //    marked[f2] = 1;
-               //    f2 += a2;
-               // }
-
-               for(j = 0; j < prime_size; j++){
-                  for(;(f[j] <i) &&(f[j] < size); f[j] += a[j]){
-                     marked[f[j]] = 1;
-                  }
+               while(f0 < i && f0 < size){
+                  marked[f0] = 1;
+                  f0 += a0;
                }
+               while(f1 < i && f1 < size){
+                  marked[f1] = 1;
+                  f1 += a1;
+               }
+               while(f2 < i && f2 < size){
+                  marked[f2] = 1;
+                  f2 += a2;
+               }
+
+               // for(j = 0; j < prime_size; j++){
+               //    for(;(f[j] <i) &&(f[j] < size); f[j] += a[j]){
+               //       marked[f[j]] = 1;
+               //    }
+               // }
                
 
 
@@ -266,26 +266,26 @@ int main (int argc, char *argv[])
 
    
 
-   i = low_value + block_size;
-   while(i <= high_value){
+   // i = low_value + block_size;
+   // while(i <= high_value){
       
 
-      for(j = 0; j < list_size%prime_size + 1; j++){
-         for(;(f[j] <i) &&(f[j] < size); ){
-            marked[f[j]] = 1;
-            f[j] += a[j];
-         }
-      }
+   //    for(j = 0; j < list_size%prime_size; j++){
+   //       for(;(f[j] <i) &&(f[j] < size); ){
+   //          marked[f[j]] = 1;
+   //          f[j] += a[j];
+   //       }
+   //    }
       
 
 
-      if(i == high_value){
-         i++;
-      }
-      else{
-         i = ((i + block_size) > high_value ) ? high_value : i + block_size;
-      }
-   }
+   //    if(i == high_value){
+   //       i++;
+   //    }
+   //    else{
+   //       i = ((i + block_size) > high_value ) ? high_value : i + block_size;
+   //    }
+   // }
 
    
    
