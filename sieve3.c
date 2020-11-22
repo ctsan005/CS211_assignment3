@@ -131,13 +131,13 @@ int main (int argc, char *argv[])
    prime = 3;
    do {
       //to put the value into the prime list
-      // if(list_size%2 == 0){
-      //    a0 = prime;
-      // }
-      // else{
-      //    a1 = prime;
-      // }
-      // prime_list[list_size] = prime;
+      if(list_size%2 == 0){
+         a0 = prime;
+      }
+      else{
+         a1 = prime;
+      }
+      prime_list[list_size] = prime;
 
       
       //use to mark all the prime in process not equal to 0
@@ -156,13 +156,13 @@ int main (int argc, char *argv[])
             }
          }
 
-         // if(list_size%2 == 0){
-         //    f0 = first;
-         // }
-         // else{
-         //    f1 = first;
-         // }
-         // first_list[list_size] = first;
+         if(list_size%2 == 0){
+            f0 = first;
+         }
+         else{
+            f1 = first;
+         }
+         first_list[list_size] = first;
          list_size++;
 
          if(p == 32){
