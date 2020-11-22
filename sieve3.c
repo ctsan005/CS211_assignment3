@@ -119,7 +119,7 @@ int main (int argc, char *argv[])
 
    register unsigned long int *a;
 
-   a = (register unsigned long int *) malloc(4*3);
+   a = (unsigned long int *) malloc(4*3);
 
    // register unsigned long int f0;
    // register unsigned long int f1;
@@ -127,7 +127,7 @@ int main (int argc, char *argv[])
 
    register unsigned long int *f;
 
-   f = (register unsigned long int *) malloc(4*3);
+   f = (unsigned long int *) malloc(4*3);
 
 
 
