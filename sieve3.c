@@ -179,7 +179,7 @@ int main (int argc, char *argv[])
       //    //if the list size reached 100, start to do the marked
          if(list_size%2 == 0){
 
-            i = low_value + 8;
+            i = low_value + 500;
             while(i <= high_value){
                
                while(f0 < i && f0 < size){
@@ -196,7 +196,7 @@ int main (int argc, char *argv[])
                   i++;
                }
                else{
-                  i = ((i + 8) > high_value ) ? high_value : i + 8;
+                  i = ((i + 500) > high_value ) ? high_value : i + 500;
                }
             }
 
