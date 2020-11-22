@@ -114,7 +114,7 @@ int main (int argc, char *argv[])
    index = 0;
 
    int prime_size;
-   prime_size = 10;
+   prime_size = 20;
 
    // register unsigned long int a0;
    // register unsigned long int a1;
@@ -131,7 +131,7 @@ int main (int argc, char *argv[])
    register unsigned  int *f;
 
    int block_size;
-   block_size = 2000;
+   block_size = 2500;
 
    
 
