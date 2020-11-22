@@ -156,22 +156,22 @@ int main (int argc, char *argv[])
             }
          }
 
-      //    // if(list_size%2 == 0){
-      //    //    f0 = first;
-      //    // }
-      //    // else{
-      //    //    f1 = first;
-      //    // }
-      //    // first_list[list_size] = first;
-      //    list_size++;
+         // if(list_size%2 == 0){
+         //    f0 = first;
+         // }
+         // else{
+         //    f1 = first;
+         // }
+         // first_list[list_size] = first;
+         list_size++;
 
-      //    if(p == 32){
-      //       if(id == 1){
-      //          if(list_size%100 == 0){
-      //             printf("list size reach 19 with prime: %lu\n",prime);
-      //          }
-      //       }
-      //    }
+         if(p == 32){
+            if(id == 1){
+               if(list_size%100 == 0){
+                  printf("list size reach 19 with prime: %lu\n",prime);
+               }
+            }
+         }
          
 
          
