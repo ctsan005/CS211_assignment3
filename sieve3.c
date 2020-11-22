@@ -42,7 +42,7 @@ int main (int argc, char *argv[])
    char  *marked_begin;       /* Portion of 2,...,'n' */
    unsigned long int *prime_list;
    unsigned long int *first_list;
-   unsigned char list_size;
+   
    int j;
 
 
@@ -156,7 +156,7 @@ int main (int argc, char *argv[])
         MPI_Finalize();
         exit(1);
     }
-
+   unsigned long int list_size;
    list_size = 0;
 
 
