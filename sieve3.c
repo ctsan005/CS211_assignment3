@@ -113,8 +113,17 @@ int main (int argc, char *argv[])
 
    index = 0;
 
-   prime_list = (unsigned long int *) malloc(4 * 20);
-   first_list = (unsigned long int *) malloc(4 * 20);
+   register unsigned long int a0;
+   register unsigned long int a1;
+
+   register unsigned long int f0;
+   register unsigned long int f1;
+
+   a0 = 0;
+   a1 = 0;
+
+   // prime_list = (unsigned long int *) malloc(4 * 20);
+   // first_list = (unsigned long int *) malloc(4 * 20);
    list_size = 0;
 
 
@@ -122,7 +131,13 @@ int main (int argc, char *argv[])
    prime = 3;
    do {
       //to put the value into the prime list
-      prime_list[list_size] = prime;
+      if(list_size == 0){
+         a0 = prime;
+      }
+      else{
+         a1 = prime;
+      }
+      // prime_list[list_size] = prime;
 
       
       //use to mark all the prime in process not equal to 0
@@ -141,12 +156,18 @@ int main (int argc, char *argv[])
             }
          }
 
-         first_list[list_size] = first;
+         if(list_size%2 == 0){
+            f0 = first;
+         }
+         else{
+            f1 = first;
+         }
+         // first_list[list_size] = first;
          list_size++;
 
          if(p == 32){
             if(id == 1){
-               if(list_size == 19){
+               if(list_size%100 == 0){
                   printf("list size reach 19 with prime: %lu\n",prime);
                }
             }
@@ -156,16 +177,20 @@ int main (int argc, char *argv[])
          
 
          //if the list size reached 100, start to do the marked
-         if(list_size == 20){
+         if(list_size%2 == 0){
 
             i = low_value + 300;
             while(i <= high_value){
-               for(j = 0; j < list_size; j++){
-                  while(first_list[j] < i && first_list[j] < size){
-                     // marked[first_list[j]] = 1;
-                     first_list[j] += prime_list[j];
-                  }
+               
+               while(f0 < i && f0 < size){
+                  marked[f0] = 1;
+                  f0 += a0;
                }
+               while(f1 < i && f1 < size){
+                  marked[f1] = 1;
+                  f1 += a1;
+               }
+
 
                if(i == high_value){
                   i++;
@@ -175,7 +200,7 @@ int main (int argc, char *argv[])
                }
             }
 
-            list_size = 0;
+            // list_size = 0;
 
          }
 
