@@ -298,26 +298,26 @@ int main (int argc, char *argv[])
 
    
 
-   // i = low_value + block_size;
-   // while(i <= high_value){
+   i = low_value + block_size;
+   while(i <= high_value){
       
 
-   //    for(j = 0; j < list_size%prime_size; j++){
-   //       for(;(f[j] <i) &&(f[j] < size); ){
-   //          marked[f[j]] = 1;
-   //          f[j] += a[j];
-   //       }
-   //    }
+      for(j = 0; j < list_size%prime_size; j++){
+         for(;(f[j] <i) &&(f[j] < size); ){
+            marked[f[j]] = 1;
+            f[j] += a[j];
+         }
+      }
       
 
 
-   //    if(i == high_value){
-   //       i++;
-   //    }
-   //    else{
-   //       i = ((i + block_size) > high_value ) ? high_value : i + block_size;
-   //    }
-   // }
+      if(i == high_value){
+         i++;
+      }
+      else{
+         i = ((i + block_size) > high_value ) ? high_value : i + block_size;
+      }
+   }
 
    
    
