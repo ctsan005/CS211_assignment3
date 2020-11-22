@@ -180,7 +180,7 @@ int main (int argc, char *argv[])
          if(list_size%2 == 0){
 
             int block_size;
-            block_size = 2000;
+            block_size = 2500;
 
             i = low_value + block_size;
             while(i <= high_value){
