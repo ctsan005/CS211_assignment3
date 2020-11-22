@@ -118,13 +118,15 @@ int main (int argc, char *argv[])
 
    
 
-   register unsigned int *a;
+   register unsigned long int *a;
 
-   a = (unsigned int *) malloc(4*prime_size);
+   a = (unsigned long int *) malloc(4*prime_size);
 
    
 
-   register unsigned int *f;
+   register unsigned long int *f;
+
+   f = (unsigned long int *) malloc(4*prime_size);
 
    int block_size;
    block_size = 3000;
@@ -139,7 +141,7 @@ int main (int argc, char *argv[])
 
    
 
-   f = (unsigned int *) malloc(4*prime_size);
+   
 
    if (a == NULL) {
         printf("Cannot allocate enough memory\n");
@@ -200,13 +202,13 @@ int main (int argc, char *argv[])
          f[list_size%prime_size] = first;
          list_size++;
 
-         // if(p == 32){
-         //    if(id == 1){
-         //       if(list_size%100 == 0){
-         //          printf("list size reach 19 with prime: %lu\n",prime);
-         //       }
-         //    }
-         // }
+         if(p == 32){
+            if(id == 1){
+               if(list_size%100 == 0){
+                  printf("list size reach 19 with prime: %lu\n",prime);
+               }
+            }
+         }
          
 
          
