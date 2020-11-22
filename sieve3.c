@@ -115,12 +115,13 @@ int main (int argc, char *argv[])
 
    register unsigned long int a0;
    register unsigned long int a1;
+   register unsigned long int a2;
 
    register unsigned long int f0;
    register unsigned long int f1;
+   register unsigned long int f2;
 
-   a0 = 0;
-   a1 = 0;
+
 
    // prime_list = (unsigned long int *) malloc(4 * 20);
    // first_list = (unsigned long int *) malloc(4 * 20);
@@ -131,11 +132,14 @@ int main (int argc, char *argv[])
    prime = 3;
    do {
       //to put the value into the prime list
-      if(list_size%2 == 0){
+      if(list_size%3 == 0){
          a0 = prime;
       }
-      else{
+      else if(list_size%3 == 1){
          a1 = prime;
+      }
+      else{
+         a2 = prime;
       }
       // prime_list[list_size] = prime;
 
@@ -156,11 +160,14 @@ int main (int argc, char *argv[])
             }
          }
 
-         if(list_size%2 == 0){
+         if(list_size%3 == 0){
             f0 = first;
          }
-         else{
+         else if(list_size%3 == 1){
             f1 = first;
+         }
+         else{
+            f2 = first;
          }
          // first_list[list_size] = first;
          list_size++;
@@ -177,7 +184,7 @@ int main (int argc, char *argv[])
          
 
       //    //if the list size reached 100, start to do the marked
-         if(list_size%2 == 0){
+         if(list_size%3 == 0){
 
             int block_size;
             block_size = 2500;
@@ -192,6 +199,10 @@ int main (int argc, char *argv[])
                while(f1 < i && f1 < size){
                   marked[f1] = 1;
                   f1 += a1;
+               }
+               while(f2 < i && f2 < size){
+                  marked[f2] = 1;
+                  f2 += a2;
                }
 
 
