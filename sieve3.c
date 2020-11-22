@@ -182,14 +182,14 @@ int main (int argc, char *argv[])
             i = low_value + 300;
             while(i <= high_value){
                
-               // while(f0 < i && f0 < size){
-               //    // marked[f0] = 1;
-               //    f0 += a0;
-               // }
-               // while(f1 < i && f1 < size){
-               //    // marked[f1] = 1;
-               //    f1 += a1;
-               // }
+               while(f0 < i && f0 < size){
+                  marked[f0] = 1;
+                  f0 += a0;
+               }
+               while(f1 < i && f1 < size){
+                  marked[f1] = 1;
+                  f1 += a1;
+               }
 
 
                if(i == high_value){
