@@ -120,13 +120,13 @@ int main (int argc, char *argv[])
 
    register unsigned long int *a;
 
-   a = (unsigned long int *) malloc(4*prime_size);
+   a = (unsigned long int *) malloc(8*prime_size);
 
    
 
    register unsigned long int *f;
 
-   f = (unsigned long int *) malloc(4*prime_size);
+   f = (unsigned long int *) malloc(8*prime_size);
 
    int block_size;
    block_size = 3000;
