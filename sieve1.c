@@ -76,44 +76,38 @@ int main (int argc, char *argv[])
    //if id = 0; also mean the main process, then the index is 0
    if (!id) index = 0;
 
-   if(id){
-      count = 0;
-      MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
-                  0, MPI_COMM_WORLD);
-   }
-
    prime = 3;
-   do {
-      if (prime * prime > low_value)
-         first =( prime * prime - low_value ) /2;
-      else {
-         if (!(low_value % prime)) first = 0;
-         else{
-            if((low_value % prime)%2 == 0){
-               first = (2 * prime - low_value % prime) / 2;
-            }
+    do {
+        if (prime * prime > low_value)
+            first =( prime * prime - low_value ) /2;
+        else {
+            if (!(low_value % prime)) first = 0;
             else{
-               first = (prime - low_value % prime)/2;
+               if((low_value % prime)%2 == 0){
+                  first = (2 * prime - low_value % prime) / 2;
+               }
+               else{
+                  first = (prime - low_value % prime)/2;
+               }
             }
-         }
-      }
-      for (i = first; i < size; i += prime) marked[i] = 1;
-      if (!id) {
-         while (marked[++index]);
-         prime = index*2 + 3;
-      }
-      // if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
-   } while (prime * prime <= n);
-   count = 0;
-   for (i = 0; i < size; i++)
-      if (!marked[i]) count++;
+        }
+        for (i = first; i < size; i += prime) marked[i] = 1;
+        if (!id) {
+            while (marked[++index]);
+            prime = index*2 + 3;
+        }
+        if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    } while (prime * prime <= n);
+    count = 0;
+    for (i = 0; i < size; i++)
+        if (!marked[i]) count++;
 
-   // if(p == 32){
-   //     printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
-   // }
-   if (p > 1)
-      MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
-                  0, MPI_COMM_WORLD);
+    // if(p == 32){
+    //     printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
+    // }
+    if (p > 1)
+        MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
+                   0, MPI_COMM_WORLD);
 
 //    unsigned long int global_size = 0;
 //    if (p > 1)
@@ -121,9 +115,9 @@ int main (int argc, char *argv[])
 //                   0, MPI_COMM_WORLD);
 
 
-   //  if(p == 32){
-   //    printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
-   //  }
+    if(p == 32){
+      printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
+    }
 
 
 

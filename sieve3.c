@@ -161,6 +161,10 @@ int main (int argc, char *argv[])
    unsigned long int list_size;
    list_size = 0;
 
+   if (!id) {
+      printf("The total time: %10.6f\n",  elapsed_time + MPI_Wtime());
+
+   }
 
    //find all the prime in the beginning
    prime = 3;
