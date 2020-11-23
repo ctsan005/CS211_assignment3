@@ -117,7 +117,7 @@ int main (int argc, char *argv[])
    prime_size = 10000;
 
    
-
+   //array for prime
    register unsigned long int *a;
 
    a = (unsigned long int *) malloc(8*prime_size);
@@ -125,7 +125,7 @@ int main (int argc, char *argv[])
    // printf("unsigned long int size is %lu", sizeof(unsigned long int));
 
    
-
+   //array for first number
    register unsigned long int *f;
 
    f = (unsigned long int *) malloc(8*prime_size);
@@ -149,13 +149,15 @@ int main (int argc, char *argv[])
         printf("Cannot allocate enough memory\n");
         MPI_Finalize();
         exit(1);
-    }
+   }
 
-    if (f == NULL) {
-        printf("Cannot allocate enough memory\n");
-        MPI_Finalize();
-        exit(1);
-    }
+   if (f == NULL) {
+      printf("Cannot allocate enough memory\n");
+      MPI_Finalize();
+      exit(1);
+   }
+
+   // use for debug and output debug info
    unsigned long int list_size;
    list_size = 0;
 
