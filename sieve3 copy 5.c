@@ -95,23 +95,19 @@ int main (int argc, char *argv[])
 
    /* Allocate this process's share of the array. */
 
-   //use for marking the prime for current process
-   marked = (char *) malloc(size);
+    marked = (char *) malloc(size);
+    marked_begin = (char *) malloc(size);
 
-   //use for marking the prime in the init set, which to calcule the prime
-   marked_begin = (char *) malloc(size);
-
-   //Check is the allocation work correctly
-   if (marked == NULL) {
-      printf("Cannot allocate enough memory\n");
-      MPI_Finalize();
-      exit(1);
-   }
-   if (marked_begin == NULL) {
-      printf("Cannot allocate enough memory\n");
-      MPI_Finalize();
-      exit(1);
-   }
+    if (marked == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
+    if (marked_begin == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
 
     //init the marked array to all 0
    for (i = 0; i < size; i++) marked[i] = 0;
@@ -129,6 +125,7 @@ int main (int argc, char *argv[])
 
    a = (unsigned long int *) malloc(8*prime_size);
 
+   // printf("unsigned long int size is %lu", sizeof(unsigned long int));
 
    
    //array for first number
@@ -136,15 +133,21 @@ int main (int argc, char *argv[])
 
    f = (unsigned long int *) malloc(8*prime_size);
 
-
-   //to check how many number of prime to check in each iteration, currently set to 100000 becasue that is sqrt(n), the maximum number of prime possible
    int block_size;
    block_size = 100000;
 
+   // register unsigned long int a0;
+   // register unsigned long int a1;
+   // register unsigned long int a2;
+
+   // register unsigned long int f0;
+   // register unsigned long int f1;
+   // register unsigned long int f2;
+
    
 
    
-   //check allocation statas for a and f
+
    if (a == NULL) {
         printf("Cannot allocate enough memory\n");
         MPI_Finalize();
@@ -161,16 +164,28 @@ int main (int argc, char *argv[])
    unsigned long int list_size;
    list_size = 0;
 
+   // if (!id) {
+   //    // printf("The total time: %10.6f\n",  elapsed_time + MPI_Wtime());
+
+   // }
 
    //find all the prime in the beginning
    prime = 3;
    do {
-
-      //store the prime into the array for prime
+      //to put the value into the prime list
+      // if(list_size%3 == 0){
+      //    a0 = prime;
+      // }
+      // else if(list_size%3 == 1){
+      //    a1 = prime;
+      // }
+      // else{
+      //    a2 = prime;
+      // }
       a[list_size%prime_size] = prime;
 
       
-      //use find the first index for this array
+      //use to mark all the prime in process not equal to 0
       if(id != 0){
          if (prime * prime > low_value)
             first =( prime * prime - low_value ) /2;
@@ -186,11 +201,95 @@ int main (int argc, char *argv[])
             }
          }
 
-         //load the result of the first into the array
+         // if(list_size%3 == 0){
+         //    f0 = first;
+         // }
+         // else if(list_size%3 == 1){
+         //    f1 = first;
+         // }
+         // else{
+         //    f2 = first;
+         // }
          f[list_size%prime_size] = first;
          list_size++;
 
+         // if(p == 32){
+         //    if(id == 1){
+         //       if(list_size%100 == 0){
+         //          printf("list size reach 19 with prime: %lu\n",prime);
+         //       }
+         //    }
+         // }
          
+
+         
+
+         // if(list_size%prime_size == 0){
+
+
+         //    i = low_value + block_size;
+         //    while(i <= high_value){
+               
+         //       // while(f0 < i && f0 < size){
+         //       //    marked[f0] = 1;
+         //       //    f0 += a0;
+         //       // }
+         //       // while(f1 < i && f1 < size){
+         //       //    marked[f1] = 1;
+         //       //    f1 += a1;
+         //       // }
+         //       // while(f2 < i && f2 < size){
+         //       //    marked[f2] = 1;
+         //       //    f2 += a2;
+         //       // }
+
+         //       for(j = 0; j < prime_size; j++){
+         //          for(;(f[j] <i) &&(f[j] < size); ){
+
+         //             marked[f[j]] = 1;
+         //             f[j] += a[j];
+
+         //             // if(j == 0) f0 += a0;
+         //             // if(j == 1) f1 += a1;
+         //             // if(j == 2) f2 += a2;
+                     
+                     
+                     
+         //             // if(j == 0){
+         //             //    if( f0 != f[0]){
+         //             //       printf("error in f0 with first %lu and %lu and a0 %lu and %lu \n",f0,f[0],a0,a[0]);
+         //             //       // MPI_Finalize();
+         //             //       // exit(1);
+         //             //       return 1;
+         //             //    }
+         //             // }
+         //             // if(j == 1){
+         //             //    if( f1 != f[1]){
+         //             //       printf("error in f1 with prime %lu and %lu",f1,f[1]);
+         //             //    }
+         //             // }
+         //             // if(j == 2){
+         //             //    if( f2 != f[2]){
+         //             //       printf("error in f2 with prime %lu and %lu",f2,f[2]);
+         //             //    }
+         //             // }
+
+         //          }
+         //       }
+               
+
+
+         //       if(i == high_value){
+         //          i++;
+         //       }
+         //       else{
+         //          i = ((i + block_size) > high_value ) ? high_value : i + block_size;
+         //       }
+         //    }
+
+         //    // list_size = 0;
+
+         // }
 
       }
 
@@ -207,7 +306,7 @@ int main (int argc, char *argv[])
 
 
    
-   //start the marking process
+
    i = low_value + block_size;
    while(i <= high_value){
       
@@ -229,10 +328,14 @@ int main (int argc, char *argv[])
       }
    }
 
-   //count the number of prime
+   // printf("list size = %lu",list_size);
+
+   
+   
+   
+
    count = 0;
 
-   //0 process skip the mark array because not needed, so just read the result from the marked_begin
    if(id == 0){
       for (i = 0; i < size; i++)
          if (!marked_begin[i]) count++;
@@ -242,10 +345,18 @@ int main (int argc, char *argv[])
          if (!marked[i]) count++;
    }
    
+
+   // if(p == 32){
+   //    printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
+   // }
    if (p > 1)
       MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
                   0, MPI_COMM_WORLD);
 
+   // unsigned long int global_size = 0;
+   // if (p > 1)
+   //    MPI_Reduce(&size, &global_size, 1, MPI_INT, MPI_SUM,
+   //                0, MPI_COMM_WORLD);
 
 
 

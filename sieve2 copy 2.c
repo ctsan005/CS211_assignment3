@@ -63,8 +63,6 @@ int main (int argc, char *argv[])
        well as the integers represented by the first and
        last array elements */
 
-
-   //calculate the low value, high value, size, and the size for the init set
    low_value = floor(3 + id * (n - 2) / p);
    if(!(low_value % 2)) low_value--;
    low_value_begin = 3;
@@ -82,7 +80,6 @@ int main (int argc, char *argv[])
 
    proc0_size = ((n - 2) / p)/2;
 
-   //Check to see is there too much process for the number to check
    if ((3 + proc0_size) < (int) sqrt((double) n)) {
       if (!id) printf("Too many processes\n");
       MPI_Finalize();
@@ -90,22 +87,20 @@ int main (int argc, char *argv[])
    }
 
    /* Allocate this process's share of the array. */
-   marked = (char *) malloc(size);
 
-   //use for marking the prime in the init set, which to calcule the prime
-   marked_begin = (char *) malloc(size);
+    marked = (char *) malloc(size);
+    marked_begin = (char *) malloc(size);
 
-   //check the two array is it allocate correctly
-   if (marked == NULL) {
-      printf("Cannot allocate enough memory\n");
-      MPI_Finalize();
-      exit(1);
-   }
-   if (marked_begin == NULL) {
-      printf("Cannot allocate enough memory\n");
-      MPI_Finalize();
-      exit(1);
-   }
+    if (marked == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
+    if (marked_begin == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
 
     //init the marked array to all 0
    for (i = 0; i < size; i++) marked[i] = 0;
@@ -148,11 +143,19 @@ int main (int argc, char *argv[])
 
    } while (prime * prime <= n);
 
+   // unsigned long long int count_begin;
+   // count_begin = 0;
+   // for (i = 0; i < size; i++)
+   //    if (!marked_begin[i]) count_begin++;
+
+   // if(p == 32){
+   //    printf("count begin = %llu, id = %llu\n", count_begin, id);
+   // }
 
    
    
    
-   //start counting the amount of prime
+
    count = 0;
 
    if(id == 0){
@@ -165,12 +168,17 @@ int main (int argc, char *argv[])
    }
    
 
-   //add the count for different process
+   // if(p == 32){
+   //    printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
+   // }
    if (p > 1)
       MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
                   0, MPI_COMM_WORLD);
 
-
+   // unsigned long int global_size = 0;
+   // if (p > 1)
+   //    MPI_Reduce(&size, &global_size, 1, MPI_INT, MPI_SUM,
+   //                0, MPI_COMM_WORLD);
 
 
 
@@ -199,3 +207,7 @@ int main (int argc, char *argv[])
    MPI_Finalize ();
    return 0;
 }
+
+// int main(int argc, char *argv[]) {
+//    return 0;
+// }

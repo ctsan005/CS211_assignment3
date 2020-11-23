@@ -44,7 +44,6 @@ int main (int argc, char *argv[])
        well as the integers represented by the first and
        last array elements */
 
-   //calculate the low value, high value, size for current process
    low_value = floor(3 + id * (n - 2) / p);
    if(!(low_value % 2)) low_value--;
    high_value = floor(2 + (id + 1) * (n - 2) / p);
@@ -55,7 +54,6 @@ int main (int argc, char *argv[])
 
    proc0_size = ((n - 2) / p)/2;
 
-   //check is there too many process
    if ((3 + proc0_size) < (int) sqrt((double) n)) {
       if (!id) printf("Too many processes\n");
       MPI_Finalize();
@@ -64,14 +62,13 @@ int main (int argc, char *argv[])
 
    /* Allocate this process's share of the array. */
 
-   marked = (char *) malloc(size);
-   
-   //check is the allocation work correctly
-   if (marked == NULL) {
-      printf("Cannot allocate enough memory\n");
-      MPI_Finalize();
-      exit(1);
-   }
+    marked = (char *) malloc(size);
+
+    if (marked == NULL) {
+        printf("Cannot allocate enough memory\n");
+        MPI_Finalize();
+        exit(1);
+    }
 
     //init the marked array to all 0
    for (i = 0; i < size; i++) marked[i] = 0;
@@ -79,41 +76,48 @@ int main (int argc, char *argv[])
    //if id = 0; also mean the main process, then the index is 0
    if (!id) index = 0;
 
-   //need to start at 3 becasue remove all the even number already
    prime = 3;
-   //find the prime with only odd number
-   do {
-      if (prime * prime > low_value)
-         first =( prime * prime - low_value ) /2;
-      else {
-         if (!(low_value % prime)) first = 0;
-         else{
-            if((low_value % prime)%2 == 0){
-               first = (2 * prime - low_value % prime) / 2;
-            }
+    do {
+        if (prime * prime > low_value)
+            first =( prime * prime - low_value ) /2;
+        else {
+            if (!(low_value % prime)) first = 0;
             else{
-               first = (prime - low_value % prime)/2;
+               if((low_value % prime)%2 == 0){
+                  first = (2 * prime - low_value % prime) / 2;
+               }
+               else{
+                  first = (prime - low_value % prime)/2;
+               }
             }
-         }
-      }
-      for (i = first; i < size; i += prime) marked[i] = 1;
-      if (!id) {
-         while (marked[++index]);
-         prime = index*2 + 3;
-      }
-      if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
-   } while (prime * prime <= n);
+        }
+        for (i = first; i < size; i += prime) marked[i] = 1;
+        if (!id) {
+            while (marked[++index]);
+            prime = index*2 + 3;
+        }
+        if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    } while (prime * prime <= n);
+    count = 0;
+    for (i = 0; i < size; i++)
+        if (!marked[i]) count++;
 
-   //start counting the amount of prime
-   count = 0;
-   for (i = 0; i < size; i++)
-      if (!marked[i]) count++;
+    // if(p == 32){
+    //     printf("count = %llu, size = %llu, id = %llu, low_value = %llu\n", count, size, id, low_value);
+    // }
+    if (p > 1)
+        MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
+                   0, MPI_COMM_WORLD);
 
-   //add up all the count from different process
-   if (p > 1)
-      MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
-                  0, MPI_COMM_WORLD);
+//    unsigned long int global_size = 0;
+//    if (p > 1)
+//       MPI_Reduce(&size, &global_size, 1, MPI_INT, MPI_SUM,
+//                   0, MPI_COMM_WORLD);
 
+
+   //  if(p == 32){
+   //    printf("Before MPI reduce: total time: %10.6f, id = %llu\n",elapsed_time + MPI_Wtime(), id);
+   //  }
 
 
 
@@ -127,8 +131,12 @@ int main (int argc, char *argv[])
 
    if (!id) {
       printf("The total number of prime: %llu, total time: %10.6f, total node %d\n", global_count, elapsed_time, p);
+    //   printf("The total number of size: %llu, total node %d\n", global_size, p);
 
    }
    MPI_Finalize ();
    return 0;
 }
+// int main(int argc, char *argv[]) {
+//    return 0;
+// }
