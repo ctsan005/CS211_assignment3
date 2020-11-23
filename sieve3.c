@@ -131,7 +131,7 @@ int main (int argc, char *argv[])
    f = (unsigned long int *) malloc(8*prime_size);
 
    int block_size;
-   block_size = 400000;
+   block_size = 600000;
 
    // register unsigned long int a0;
    // register unsigned long int a1;
